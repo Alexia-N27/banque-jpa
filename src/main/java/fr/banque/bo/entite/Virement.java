@@ -1,13 +1,11 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Virement")
-public class Virement {
+@DiscriminatorValue(value = "Virement")
+public class Virement extends Operation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "beneficiaire")
     private String beneficiaire;
 

@@ -1,13 +1,11 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "LivretA")
-public class LivretA {
+public class LivretA extends Compte {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "taux")
     private Double taux;
 

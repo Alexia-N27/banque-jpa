@@ -1,4 +1,4 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
@@ -7,6 +7,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Operation")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Type")
 public class Operation {
 
     @Id
@@ -20,8 +22,9 @@ public class Operation {
     @Column(name = "localDateTime")
     protected LocalDateTime localDateTime;
 
-    @OneToMany(mappedBy = "comptes")
-    protected Set<Compte> comptes;
+    @ManyToOne
+    @JoinColumn(name = "COMPTE_ID")
+    protected Compte compte;
 
     public Operation() {
     }
@@ -58,11 +61,11 @@ public class Operation {
         this.localDateTime = localDateTime;
     }
 
-    public Set<Compte> getComptes() {
-        return comptes;
+    public Compte getCompte() {
+        return this.compte;
     }
 
-    public void setComptes(Set<Compte> comptes) {
-        this.comptes = comptes;
+    public void setComptes(Compte compte) {
+        this.compte = compte;
     }
 }

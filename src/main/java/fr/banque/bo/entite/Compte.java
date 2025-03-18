@@ -1,4 +1,4 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,11 @@ import java.util.Set;
 
 @Entity
 @Table(name= "Compte")
-public class Compte {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Compte {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected Integer id;
     @Column(name = "numero")
@@ -17,9 +21,8 @@ public class Compte {
     @ManyToMany(mappedBy = "comptes")
     private Set<Client>clients;
 
-    @ManyToOne
-    @JoinColumn(name="OPE_ID")
-    private Operation operation ;
+    @OneToMany(mappedBy = "compte")
+    private Set<Operation> operations ;
 
     public Compte() {
     }
@@ -54,6 +57,14 @@ public class Compte {
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;
+    }
+
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
 }
 

@@ -1,4 +1,4 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
@@ -6,11 +6,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "AssuranceVie")
-public class AssuranceVie {
+public class AssuranceVie extends Compte {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "localDate")
+    @Column(name = "dateFin")
     private LocalDate dateFin;
     @Column(name = "taux")
     private Double taux;

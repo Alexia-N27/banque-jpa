@@ -1,4 +1,4 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
@@ -24,7 +24,7 @@ public class Client {
     protected Adresse adresse;
 
     @ManyToOne
-    @JoinColumn(name="BAN_ID")
+    @JoinColumn(name="BANQUE_ID")
     private Banque banque;
 
     @ManyToMany
@@ -67,5 +67,29 @@ public class Client {
 
     public void setLocalDateTime(LocalDateTime localDateTime) {
         LocalDateTime = localDateTime;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Banque getBanque() {
+        return banque;
+    }
+
+    public void setBanque(Banque banque) {
+        this.banque = banque;
+    }
+
+    public Set<Compte> getComptes() {
+        return comptes;
+    }
+
+    public void setComptes(Set<Compte> comptes) {
+        this.comptes = comptes;
     }
 }

@@ -1,13 +1,11 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Courant")
-public class Courant {
+public class Courant extends Compte {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "decouvert")
     private Double decouvert;
 
@@ -21,4 +19,6 @@ public class Courant {
     public void setDecouvert(Double decouvert) {
         this.decouvert = decouvert;
     }
+
+
 }

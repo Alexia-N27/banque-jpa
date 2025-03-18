@@ -1,7 +1,6 @@
-package fr.banque.bo;
+package fr.banque.bo.entite;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
@@ -15,7 +14,7 @@ public class Banque {
     @Column(name = "nom")
     private String nom;
 
-    @OneToMany(mappedBy = "clients")
+    @OneToMany(mappedBy = "banque")
     private Set<Client> clients;
 
     public Banque() {
